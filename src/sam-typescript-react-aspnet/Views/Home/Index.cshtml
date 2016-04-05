@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div id="content"></div>
+
+@section Scripts{    
+    <script>
+        System.config({
+            map: {
+                'react': './lib/react/react.js',
+                'react-dom':'./lib/react/react-dom.js'
+            }
+            //,
+            //map: {
+            //    'react': 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.0-rc.2/react.js',
+            //    'react-dom': 'https://cdnjs.cloudflare.com/ajax/libs/react/15.0.0-rc.2/react-dom.js'
+            //}
+        });
+        System.import('./app/main.js')
+            .then(null, console.error.bind(console));
+    </script>
+}

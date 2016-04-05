@@ -1,0 +1,15 @@
+{
+	"version": "1.0.0",
+	"name": "ASP.NET",
+  "private": true,
+  "dependencies": {
+    "react": "0.14.8",
+    "react-dom": "0.14.8",
+    "systemjs": "0.19.24"
+  },
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "rimraf": "2.5.2",
+    "typings": "0.7.11"
+  }
+}
