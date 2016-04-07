@@ -37,10 +37,10 @@ export class RocketState extends State {
         }
 
         if (this.launched(model)) {
-            //representation = this.views.launched(model);
+            representation = this.views.launched(model);
         }
         if (this.aborted(model)) {
-            //representation = this.views.aborted(model);
+            representation = this.views.aborted(model);
         }
 
         this.views.display(representation);

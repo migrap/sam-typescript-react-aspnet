@@ -39,7 +39,7 @@ export class RocketViews extends Views {
                     <div>
                         <p>Counter: {model.counter}</p>    
                         {/* onClick scoped using ES6 */} 
-                        <button onClick={()=>this.start(this.props)}>Start</button>                                         
+                        <button onClick={() => this.start(this.props) }>Start</button>                                         
                     </div>
                 )
             }
@@ -50,17 +50,15 @@ export class RocketViews extends Views {
     // State representation of the counting state
     counting(model) {       
         class Counting extends React.Component<any, any>{
-            abort(e) {
-                e.preventDefault();
-                this.props.actions.abort({});
+            abort(props) {
+                props.actions.abort({});
             }
             render() {
                 return (
                     <div>
                         <p>Counter: {model.counter}</p>
-                        <form {...this.props} onSubmit={this.abort}>
-                            <input type="submit" value='Abort'></input>
-                        </form>
+                        {/* onClick scoped using ES6 */} 
+                        <button onClick={() => this.abort(this.props) }>Abort</button>
                     </div>
                 )
             }
@@ -70,21 +68,21 @@ export class RocketViews extends Views {
 
     // State representation of the aborted state
     aborted(model) {
-        //@Component({
-        //    selector: 'aborted',
-        //    template: `<p>Aborted at counter: {{rocket.model.counter}}</p>`
-        //})
-        //class Aborted { }
-        //return Aborted;
+        class Aborted extends React.Component<any, any>{
+            render() {
+                return <p>Aborted at counter: {model.counter}</p>
+            }
+        }
+        return Aborted;
     }
 
     // State representation of the launched state
     launched(model) {
-        //@Component({
-        //    selector: 'launched',
-        //    template: `<p>Launched</p>`
-        //})
-        //class Launched { }
-        //return Launched;
+        class Launched extends React.Component<any, any>{
+            render() {
+                return <p>Launched</p>
+            }
+        }
+        return Launched;
     }
 }

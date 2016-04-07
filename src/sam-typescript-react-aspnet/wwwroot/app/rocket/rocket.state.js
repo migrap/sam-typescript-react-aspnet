@@ -40,8 +40,10 @@ System.register(['./../sam/sam.state', './rocket.model'], function(exports_1, co
                         representation = this.views.counting(model);
                     }
                     if (this.launched(model)) {
+                        representation = this.views.launched(model);
                     }
                     if (this.aborted(model)) {
+                        representation = this.views.aborted(model);
                     }
                     this.views.display(representation);
                 }

@@ -43,33 +43,32 @@ System.register(['react', './../sam/sam.views', 'rxjs/Subject'], function(export
                 // State representation of the counting state
                 counting(model) {
                     class Counting extends React.Component {
-                        abort(e) {
-                            e.preventDefault();
-                            this.props.actions.abort({});
+                        abort(props) {
+                            props.actions.abort({});
                         }
                         render() {
-                            return (React.createElement("div", null, React.createElement("p", null, "Counter: ", model.counter), React.createElement("form", React.__spread({}, this.props, {onSubmit: this.abort}), React.createElement("input", {type: "submit", value: 'Abort'}))));
+                            return (React.createElement("div", null, React.createElement("p", null, "Counter: ", model.counter), React.createElement("button", {onClick: () => this.abort(this.props)}, "Abort")));
                         }
                     }
                     return Counting;
                 }
                 // State representation of the aborted state
                 aborted(model) {
-                    //@Component({
-                    //    selector: 'aborted',
-                    //    template: `<p>Aborted at counter: {{rocket.model.counter}}</p>`
-                    //})
-                    //class Aborted { }
-                    //return Aborted;
+                    class Aborted extends React.Component {
+                        render() {
+                            return React.createElement("p", null, "Aborted at counter: ", model.counter);
+                        }
+                    }
+                    return Aborted;
                 }
                 // State representation of the launched state
                 launched(model) {
-                    //@Component({
-                    //    selector: 'launched',
-                    //    template: `<p>Launched</p>`
-                    //})
-                    //class Launched { }
-                    //return Launched;
+                    class Launched extends React.Component {
+                        render() {
+                            return React.createElement("p", null, "Launched");
+                        }
+                    }
+                    return Launched;
                 }
             }
             exports_1("RocketViews", RocketViews);
