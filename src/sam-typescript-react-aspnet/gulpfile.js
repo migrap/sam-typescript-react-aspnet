@@ -25,6 +25,11 @@ gulp.task("clean:js.map", function (cb) {
 
 gulp.task("clean", ["clean:js", "clean:js.map", "clean:css"]);
 
+gulp.task("copy:jquery", function () {
+    return gulp.src(paths.npm + '/jquery/dist/*', { base: paths.npm + '/jquery/dist/' })
+        .pipe(gulp.dest(paths.lib + '/jquery/'));
+});
+
 gulp.task("copy:systemjs", function () {
     return gulp.src(paths.npm + '/systemjs/dist/**/*.*', { base: paths.npm + '/systemjs/dist/' })
     .pipe(gulp.dest(paths.lib + '/systemjs/'));
