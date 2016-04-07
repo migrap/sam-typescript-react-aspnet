@@ -30,6 +30,11 @@ gulp.task("copy:systemjs", function () {
     .pipe(gulp.dest(paths.lib + '/systemjs/'));
 });
 
+gulp.task("copy:rxjs", function () {
+    return gulp.src(paths.npm + '/rxjs/bundles/*.*', { base: paths.npm + '/rxjs/bundles/' })
+        .pipe(gulp.dest(paths.lib + 'rxjs/'));
+});
+
 gulp.task("copy:react", function () {
     gulp.src(paths.npm + '/react/dist/**/*.js', { base: paths.npm + '/react/dist/' })
         .pipe(gulp.dest(paths.lib + '/react/'));
@@ -38,6 +43,6 @@ gulp.task("copy:react", function () {
         .pipe(gulp.dest(paths.lib + '/react/'));
 });
 
-gulp.task("copy", ["copy:systemjs", "copy:react"]);
+gulp.task("copy", ["copy:systemjs", "copy:react", "copy:rxjs"]);
 
 gulp.task('default', ["clean", "copy"]);

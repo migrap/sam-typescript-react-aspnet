@@ -38,6 +38,14 @@ namespace sam_typescript_react_aspnet {
 
             app.UseStaticFiles();
 
+            app.Use(async (context, next) => {
+                await next.Invoke();
+                if(context.Request.Path.ToString().EndsWith(".tsx") && context.Response.ContentType == null) {
+                    context.Response.ContentType = "application/x-typescript";
+                }
+                
+            });
+
             app.UseMvc(routes => routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}"));
         }
 
